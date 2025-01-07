@@ -83,7 +83,7 @@ sync.subscribe("channel");
 Redis Cluster also makes a distinction between user-space and key-space
 messages. Key-space notifications (Pub/Sub messages for key-activity)
 stay node-local and are not broadcasted across the Redis Cluster. A
-notification about, e.g. an expiring key, stays local to the node on
+notification about, e.g. an expiring key, stays local to the node on
 which the key expired.
 
 Clients that are interested in keyspace notifications must subscribe to

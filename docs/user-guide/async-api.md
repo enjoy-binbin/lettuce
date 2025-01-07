@@ -311,7 +311,7 @@ chaining futures on the default thread is always a good idea except for
 one case: Blocking/long-running operations. As a rule of thumb, never
 block the event loop. If you need to chain futures using blocking calls,
 use the `thenAcceptAsync()`/`thenRunAsync()` methods to fork the
-processing to another thread. The `…​async()` methods need a threading
+processing to another thread. The `…async()` methods need a threading
 infrastructure for execution, by default the `ForkJoinPool.commonPool()`
 is used. The `ForkJoinPool` is statically constructed and does not grow
 with increasing load. Using default `Executor`s is almost always the
@@ -454,7 +454,7 @@ Keep in mind to execute the `Runnable` on a custom `Executor` if you are
 doing blocking calls within the `Runnable`.
 
 Another chaining method worth mentioning is the either-or chaining. A
-couple of `…​Either()` methods are available on a `CompletionStage<T>`,
+couple of `…Either()` methods are available on a `CompletionStage<T>`,
 see the [Java 8 API docs](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletionStage.html)
 for the full reference. The either-or pattern consumes the value from
 the first future that is completed. A good example might be two services

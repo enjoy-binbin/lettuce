@@ -36,12 +36,12 @@ reasons:
 
 2.  Command was not finished in time. This can happen if your Redis
     server is overloaded or if the connection is blocked by a command
-    (e.g. `BLPOP 0`, long-running Lua script). See also
+    (e.g. `BLPOP 0`, long-running Lua script). See also
     [gives](#blpopdurationzero--gives-rediscommandtimeoutexception).
 
 3.  Configured timeout does not match Redis’s performance.
 
-4.  If you block the `EventLoop` (e.g. calling blocking methods in a
+4.  If you block the `EventLoop` (e.g. calling blocking methods in a
     `RedisFuture` callback or in a Reactive pipeline). That can easily
     happen when calling Redis commands in a Pub/Sub listener or a
     `RedisConnectionStateListener`.
@@ -146,7 +146,7 @@ Options](advanced-usage.md#client-options) for further reference.
 **Symptoms:**
 
 Performance degradation when using the Reactive API with a single
-connection (i.e. non-pooled connection arrangement).
+connection (i.e. non-pooled connection arrangement).
 
 **Diagnosis:**
 

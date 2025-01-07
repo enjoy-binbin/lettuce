@@ -26,7 +26,7 @@ Best for:
 
 ### Example usage
 
-```java
+``` java
 RedisURI redisURI = RedisURI.Builder.redis("acme.com").build();
 RedisClient redisClient = RedisClient.create(redisURI);
 try (StatefulRedisConnection<ByteBuffer, ByteBuffer> connect = redisClient.connect()){
@@ -62,7 +62,7 @@ Best for:
 
 ### Example usage
 
-```java
+``` java
 RedisURI redisURI = RedisURI.Builder.redis("127.0.0.1").withPort(16379).build();
 
 try (RedisClient client = RedisClient.create(redisURI)) {
@@ -81,7 +81,7 @@ Best for:
 
 ### Example usage   
 
-```java
+``` java
 JsonPath myPath = JsonPath.of("$..mountain_bikes");
 RedisURI redisURI = RedisURI.Builder.redis("127.0.0.1").withPort(16379).build();
 try (RedisClient client = RedisClient.create(redisURI)) {

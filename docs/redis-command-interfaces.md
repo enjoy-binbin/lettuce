@@ -154,7 +154,7 @@ public interface MixedCommands extends Commands {
     participate in settings for known commands. These are primarily used
     to determine a command intent (whether a command is a read-only one).
     Commands are resolved case-sensitive. Use lower-case command names in
-    `@Command` to resolve to an unknown command to e.g. enforce
+    `@Command` to resolve to an unknown command to e.g. enforce
     master-routing.
 
 ### CamelCase in method names

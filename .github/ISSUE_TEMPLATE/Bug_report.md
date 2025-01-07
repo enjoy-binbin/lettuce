@@ -16,7 +16,7 @@ labels: 'type: waiting-for-triage'
 <details>
 <summary>Stack trace</summary>
 
-```java
+``` java
 // your stack trace here;
 ```
 
@@ -29,7 +29,7 @@ labels: 'type: waiting-for-triage'
 <details>
 <summary>Input Code</summary>
 
-```java
+``` java
 // your code here;
 ```
 

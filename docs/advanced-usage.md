@@ -84,7 +84,7 @@ to allocate Threads on-demand.
 #### Shutdown
 
 Every client instance requires a call to `shutdown()` to clear used
-resources. Clients with dedicated `ClientResources` (i.e. no
+resources. Clients with dedicated `ClientResources` (i.e. no
 `ClientResources` passed within the constructor/`create`-method) will
 shut down `ClientResources` on their own.
 
@@ -211,7 +211,7 @@ disabled by setting <code>commandLatencyPublisherOptions(…)</code> to
 <p>Configures a DNS resolver to resolve hostnames to a
 <code>java.net.InetAddress</code>. Defaults to the JVM DNS resolution
 that uses blocking hostname resolution and caching of lookup results.
-Users of DNS-based Redis-HA setups (e.g. AWS ElastiCache) might want to
+Users of DNS-based Redis-HA setups (e.g. AWS ElastiCache) might want to
 configure a different DNS resolver. Lettuce comes with
 <code>DirContextDnsResolver</code> that uses Java’s
 <code>DnsContextFactory</code> to resolve hostnames.
@@ -233,10 +233,10 @@ netty's <code>AddressResolver</code> that resolves DNS names on
 <code>DnsResolvers#UNRESOLVED</code> is used as <code>DnsResolver</code>. Defaults to
 <code>io.netty.resolver.DefaultAddressResolverGroup#INSTANCE</code> if <code>netty-dns-resolver</code>
 is not available, otherwise defaults to <code>io.netty.resolver.dns.DnsAddressResolverGroup</code></p>
-<p>Users of DNS-based Redis-HA setups (e.g. AWS ElastiCache) might want to configure a different DNS 
+<p>Users of DNS-based Redis-HA setups (e.g. AWS ElastiCache) might want to configure a different DNS
 resolver group. For example:
 
-```java
+``` java
 new DnsAddressResolverGroup(
   new DnsNameResolverBuilder(dnsEventLoop)
       .channelType(NioDatagramChannel.class)
@@ -680,7 +680,7 @@ applies for <code>-ASK</code> redirections in case a slot is set to
 <td colspan="3"><p>Since: 6.1.6</p>
 <p>When providing a <code>nodeFilter</code>, then
 <code>RedisClusterNode</code>s can be filtered from the topology view to
-remove unwanted nodes (e.g. failed replicas). Note that the filter is
+remove unwanted nodes (e.g. failed replicas). Note that the filter is
 applied only after obtaining the topology so the filter does not prevent
 trying to connect the node during topology discovery.</p></td>
 </tr>
@@ -1278,7 +1278,7 @@ Each command is tracked with:
 - Latency to complete (min, max, percentiles)
 
 Command latencies are tracked on remote endpoint (distinction by host
-and port or socket path) and command type level (`GET`, `SET`, …​). It is
+and port or socket path) and command type level (`GET`, `SET`, …). It is
 possible to track command latencies on a per-connection level (see
 `DefaultCommandLatencyCollectorOptions`).
 
@@ -1327,7 +1327,7 @@ To disable metrics collection, use own `ClientResources` with a disabled
 ``` java
 ClientResources res = DefaultClientResources
         .builder()
-        .commandLatencyCollectorOptions( DefaultCommandLatencyCollectorOptions.disabled())
+        .commandLatencyCollectorOptions(DefaultCommandLatencyCollectorOptions.disabled())
         .build();
 
 RedisClient client = RedisClient.create(res);
@@ -1338,32 +1338,32 @@ RedisClient client = RedisClient.create(res);
 The following settings are available to configure from
 `DefaultCommandLatencyCollectorOptions`:
 
-| Name                                                                                                                                                                                                                                                                                                                                                                                  | Method                      | Default                         |
-|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------|---------------------------------|
-| **Disable metrics tracking**                                                                                                                                                                                                                                                                                                                                                          | `disable`                   | `false`                         |
-| Disables tracking of command latency metrics.                                                                                                                                                                                                                                                                                                                                         |                             |                                 |
-| **Latency time unit**                                                                                                                                                                                                                                                                                                                                                                 | `targetUnit`                | `MICROSECONDS`                  |
-| The target unit for command latency values. All values in the `CommandLatencyEvent` and a `CommandMetrics` instance are `long` values scaled to the `targetUnit`.                                                                                                                                                                                                                     |                             |                                 |
-| **Latency percentiles**                                                                                                                                                                                                                                                                                                                                                               | `targetPercentiles`         | `50.0, 90 .0, 95.0, 99.0, 99.9` |
-| A `double`-array of percentiles for latency metrics. The `CommandMetrics` contains a map that holds the percentile value and the latency value according to the percentile. Note that percentiles here must be specified in the range between 0 and 100.                                                                                                                              |                             |                                 |
-| **Reset latencies after publish**                                                                                                                                                                                                                                                                                                                                                     | `reset LatenciesAfterEvent` | `true`                          |
-| Allows controlling whether the latency metrics are reset to zero one they were published. Setting `reset LatenciesAfterEvent` allows accumulating metrics over a long period for long-term analytics.                                                                                                                                                                                 |                             |                                 |
-| **Local socket distinction**                                                                                                                                                                                                                                                                                                                                                          | `localDistinction`          | `false`                         |
-| Enables per connection metrics tracking instead of per host/port. If `true`, multiple connections to the same host/connection point will be recorded separately which allows to inspection of every connection individually. If `false`, multiple connections to the same host/connection point will be recorded together. This allows a consolidated view on one particular service. |                             |                                 |
+| Name                                                                                                                                                                                                                                                                                                                                                                                  | Method                     | Default                         |
+|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------|---------------------------------|
+| **Disable metrics tracking**                                                                                                                                                                                                                                                                                                                                                          | `disable`                  | `false`                         |
+| Disables tracking of command latency metrics.                                                                                                                                                                                                                                                                                                                                         |                            |                                 |
+| **Latency time unit**                                                                                                                                                                                                                                                                                                                                                                 | `targetUnit`               | `MICROSECONDS`                  |
+| The target unit for command latency values. All values in the `CommandLatencyEvent` and a `CommandMetrics` instance are `long` values scaled to the `targetUnit`.                                                                                                                                                                                                                     |                            |                                 |
+| **Latency percentiles**                                                                                                                                                                                                                                                                                                                                                               | `targetPercentiles`        | `50.0, 90 .0, 95.0, 99.0, 99.9` |
+| A `double`-array of percentiles for latency metrics. The `CommandMetrics` contains a map that holds the percentile value and the latency value according to the percentile. Note that percentiles here must be specified in the range between 0 and 100.                                                                                                                              |                            |                                 |
+| **Reset latencies after publish**                                                                                                                                                                                                                                                                                                                                                     | `resetLatenciesAfterEvent` | `true`                          |
+| Allows controlling whether the latency metrics are reset to zero one they were published. Setting `resetLatenciesAfterEvent` allows accumulating metrics over a long period for long-term analytics.                                                                                                                                                                                  |                            |                                 |
+| **Local socket distinction**                                                                                                                                                                                                                                                                                                                                                          | `localDistinction`         | `false`                         |
+| Enables per connection metrics tracking instead of per host/port. If `true`, multiple connections to the same host/connection point will be recorded separately which allows to inspection of every connection individually. If `false`, multiple connections to the same host/connection point will be recorded together. This allows a consolidated view on one particular service. |                            |                                 |
 
 #### EventPublisher Options
 
 The following settings are available to configure from
 `DefaultEventPublisherOptions`:
 
-| Name                                              | Method                   | Default   |
-|---------------------------------------------------|--------------------------|-----------|
-| **Disable event publisher**                       | `disable`                | `false`   |
-| Disables event publishing.                        |                          |           |
-| **Event publishing time unit**                    | `ev entEmitIntervalUnit` | `MINUTES` |
-| The `TimeUnit` for the event publishing interval. |                          |           |
-| **Event publishing interval**                     | `eventEmitInterval`      | `10`      |
-| The interval for the event publishing.            |                          |           |
+| Name                                              | Method                  | Default   |
+|---------------------------------------------------|-------------------------|-----------|
+| **Disable event publisher**                       | `disable`               | `false`   |
+| Disables event publishing.                        |                         |           |
+| **Event publishing time unit**                    | `eventEmitIntervalUnit` | `MINUTES` |
+| The `TimeUnit` for the event publishing interval. |                         |           |
+| **Event publishing interval**                     | `eventEmitInterval`     | `10`      |
+| The interval for the event publishing.            |                         |           |
 
 ### Micrometer
 
@@ -1371,7 +1371,7 @@ Commands are tracked by using two Micrometer `Timer`s:
 `lettuce.command.firstresponse` and `lettuce.command.completion`. The
 following tags are attached to each timer:
 
-- `command`: Name of the command (`GET`, `SET`, …​)
+- `command`: Name of the command (`GET`, `SET`, …)
 
 - `local`: Local socket (`localhost/127.0.0.1:45243` or `ANY` when local
   distinction is disabled, which is the default behavior)
@@ -1573,7 +1573,7 @@ Sharing a connection between threads is possible but keep in mind:
 for their results**
 
 You should not use transactional commands (`MULTI`) on shared
-connection. If you use Redis-blocking commands (e. g. `BLPOP`) all
+connection. If you use Redis-blocking commands (e.g. `BLPOP`) all
 invocations of the shared connection will be blocked until the blocking
 command returns which impacts the performance of other threads. Blocking
 commands can be a reason to use multiple connections.
@@ -1581,7 +1581,7 @@ commands can be a reason to use multiple connections.
 ### Command flushing
 
 !!! NOTE
-    Command flushing is an advanced topic and in most cases (i.e. unless
+    Command flushing is an advanced topic and in most cases (i.e. unless
     your use-case is a single-threaded mass import application) you won’t
     need it as Lettuce uses pipelining by default.
 
@@ -1992,7 +1992,7 @@ with Lettuce:
 - `ValueStreamingOutput`
 
 Those outputs take a streaming channel (see `ValueStreamingChannel`) and
-invoke the callback method (e.g. `onValue(V value)`) for every data
+invoke the callback method (e.g. `onValue(V value)`) for every data
 element.
 
 Implementing an own output is, in general, a good idea when you want to
@@ -2493,7 +2493,7 @@ This means that:
 - Redis executes commands from `T1` interleaved with commands from `T2`.
 
 - If there is no guaranteed delivery, any of the commands may be
-  dropped, i.e. not arrive at Redis.
+  dropped, i.e. not arrive at Redis.
 
 ### Failures and *at-least-once* execution
 

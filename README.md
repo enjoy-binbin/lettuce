@@ -95,7 +95,7 @@ If you'd rather like the latest snapshots of the upcoming major version, use our
 Basic Usage
 -----------
 
-```java
+``` java
 RedisClient client = RedisClient.create("redis://localhost");
 StatefulRedisConnection<String, String> connection = client.connect();
 RedisStringCommands sync = connection.sync();
@@ -112,7 +112,7 @@ See [Basic usage](https://redis.github.io/lettuce/user-guide/connecting-redis/#b
 Asynchronous API
 ------------------------
 
-```java
+``` java
 StatefulRedisConnection<String, String> connection = client.connect();
 RedisStringAsyncCommands<String, String> async = connection.async();
 RedisFuture<String> set = async.set("key", "value");
@@ -129,7 +129,7 @@ See [Asynchronous API](https://redis.github.io/lettuce/user-guide/async-api/) fo
 Reactive API
 ------------------------
 
-```java
+``` java
 StatefulRedisConnection<String, String> connection = client.connect();
 RedisStringReactiveCommands<String, String> reactive = connection.reactive();
 Mono<String> set = reactive.set("key", "value");
@@ -145,7 +145,7 @@ See [Reactive API](https://redis.github.io/lettuce/user-guide/reactive-api/) for
 Pub/Sub
 -------
 
-```java
+``` java
 RedisPubSubCommands<String, String> connection = client.connectPubSub().sync();
 connection.getStatefulConnection().addListener(new RedisPubSubListener<String, String>() { ... })
 connection.subscribe("channel");

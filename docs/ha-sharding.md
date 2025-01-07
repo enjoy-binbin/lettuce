@@ -51,7 +51,7 @@ Sentinel and allow failover (which include master promotion). The
 by a `TopologyProvider`:
 
 - `MasterReplicaTopologyProvider`: Dynamic topology lookup using the
-  `INFO REPLICATION` output. Replicas are listed as replicaN=…​ entries.
+  `INFO REPLICATION` output. Replicas are listed as replicaN=… entries.
   The initial connection can either point to a master or a replica, and
   the topology provider will discover nodes. The connection needs to be
   re-established outside of Lettuce in a case of a Master/Replica
@@ -333,7 +333,7 @@ Cross-slot command execution is available on the following APIs:
 ### Execution of commands on one or multiple cluster nodes
 
 Sometimes commands have to be executed on multiple cluster nodes. The
-advanced cluster API allows to select a set of nodes (e.g. all masters,
+advanced cluster API allows to select a set of nodes (e.g. all masters,
 all replicas) and trigger a command on this set.
 
 ``` java

@@ -148,7 +148,7 @@ client.shutdown();
 Each Redis command is implemented by one or more methods with names
 identical to the lowercase Redis command name. Complex commands with
 multiple modifiers that change the result type include the CamelCased
-modifier as part of the command name, e.g. `zrangebyscore` and
+modifier as part of the command name, e.g. `zrangebyscore` and
 `zrangebyscoreWithScores`.
 
 Redis connections are designed to be long-lived and thread-safe, and if
